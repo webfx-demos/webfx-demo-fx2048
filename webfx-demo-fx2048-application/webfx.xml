@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project applicationId="dev.webfx.demo.fx2048" applicationLabel="FX2048">
+
+    <exported-packages>
+        <source-packages/>
+    </exported-packages>
+
+    <providers>
+        <provider interface="javafx.application.Application">io.fxgame.game2048.Game2048</provider>
+    </providers>
+
+    <dependencies>
+        <used-by-source-modules/>
+        <resource-module>webfx-demo-fx2048-css</resource-module>
+    </dependencies>
+
+</project>
