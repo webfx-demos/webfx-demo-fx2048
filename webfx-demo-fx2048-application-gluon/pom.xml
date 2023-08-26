@@ -116,8 +116,8 @@
                     </attachList>
                     <resourcesList>
                         <list>dev/webfx/platform/meta/exe/[^/]+$</list>
-                        <list>images/checkbox/[^/]+$</list>
                         <list>io/fxgame/game2048/css/[^/]+$</list>
+                        <list>javafx/scene/control/skin/checkbox/[^/]+$</list>
                     </resourcesList>
                     <appIdentifier>dev.webfx.demo.fx2048</appIdentifier>
                     <releaseConfiguration>

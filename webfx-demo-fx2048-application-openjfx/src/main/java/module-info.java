@@ -4,6 +4,7 @@ module webfx.demo.fx2048.application.openjfx {
 
     // Direct dependencies modules
     requires webfx.demo.fx2048.application;
+    requires webfx.extras.webtext.peers.openjfx;
     requires webfx.kit.openjfx;
     requires webfx.kit.platform.visibility.openjfx;
     requires webfx.platform.boot.java;
@@ -15,7 +16,7 @@ module webfx.demo.fx2048.application.openjfx {
     requires webfx.platform.storage.java;
     requires webfx.platform.storagelocation.java;
 
-    // Meta Resource package
+    // Resources packages
     opens dev.webfx.platform.meta.exe;
 
 }
