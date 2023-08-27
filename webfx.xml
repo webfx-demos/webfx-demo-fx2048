@@ -8,7 +8,7 @@
     </modules>
 
     <required-libraries>
-        <webfx-library artifact="dev.webfx:webfx-extras-private:0.1.0-SNAPSHOT"/> <!-- HtmlText -->
+        <webfx-library artifact="dev.webfx:webfx-extras:0.1.0-SNAPSHOT"/> <!-- HtmlText -->
     </required-libraries>
 
 </project>
