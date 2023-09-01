@@ -23,6 +23,7 @@ public class ServiceLoader<S> implements Iterable<S> {
             case "dev.webfx.platform.storage.spi.LocalStorageProvider": return new ServiceLoader<S>(dev.webfx.platform.storage.spi.impl.gwt.GwtLocalStorageProvider::new);
             case "dev.webfx.platform.storage.spi.SessionStorageProvider": return new ServiceLoader<S>(dev.webfx.platform.storage.spi.impl.gwt.GwtSessionStorageProvider::new);
             case "dev.webfx.platform.uischeduler.spi.UiSchedulerProvider": return new ServiceLoader<S>(dev.webfx.platform.uischeduler.spi.impl.gwt.GwtUiSchedulerProvider::new);
+            case "dev.webfx.platform.util.keyobject.parser.spi.TreeParserProvider": return new ServiceLoader<S>();
             case "javafx.application.Application": return new ServiceLoader<S>(io.fxgame.game2048.Game2048::new);
 
             // UNKNOWN SPI

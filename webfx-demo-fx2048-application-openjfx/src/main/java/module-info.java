@@ -16,7 +16,4 @@ module webfx.demo.fx2048.application.openjfx {
     requires webfx.platform.storage.java;
     requires webfx.platform.storagelocation.java;
 
-    // Resources packages
-    opens dev.webfx.platform.meta.exe;
-
 }
