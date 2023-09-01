@@ -467,7 +467,7 @@ public class Board extends VBox {
                         "        </div>\n" +
                         "        <br/>\n" +
                         "        <div>\n" +
-                        "            Powered by <a class='game-lblAboutSub2' href='https://openjfx.io/ target='_blank'>OpenJFX</a> Project\n" +
+                        "            Powered by <a class='game-lblAboutSub2' href='https://openjfx.io/' target='_blank'>OpenJFX</a> Project\n" +
                         "        </div>\n" +
                         "        <br/>\n" +
                         "        <div>\n" +
