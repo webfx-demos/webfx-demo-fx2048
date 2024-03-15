@@ -34,7 +34,7 @@ public class SessionManager {
         UserSettings.LOCAL.restore(props, propertiesFilename);
 
         gridOperator.traverseGrid((x, y) -> {
-            var val = props.getProperty("Location_" + x + "_" + y);
+            String val = props.getProperty("Location_" + x + "_" + y);
             if (!val.equals("0")) {
                 Tile t = Tile.newTile(Integer.parseInt(val));
                 Location l = new Location(x, y);
@@ -46,7 +46,7 @@ public class SessionManager {
 
         time.set(props.getProperty("time"));
 
-        var score = props.getProperty("score");
+        String score = props.getProperty("score");
         if (score != null) {
             return Integer.parseInt(score);
         }

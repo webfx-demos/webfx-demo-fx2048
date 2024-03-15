@@ -17,7 +17,7 @@ public class RecordManager {
     public void saveRecord(Integer score) {
         int oldRecord = restoreRecord();
         props.setProperty("record", Integer.toString(Math.max(oldRecord, score)));
-        var fileName = propertiesFilename;
+        String fileName = propertiesFilename;
         UserSettings.LOCAL.store(props, fileName);
     }
 

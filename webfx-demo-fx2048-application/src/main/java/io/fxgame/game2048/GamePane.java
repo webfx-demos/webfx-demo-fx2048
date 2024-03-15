@@ -37,7 +37,7 @@ public class GamePane extends BorderPane {
         sceneProperty().addListener((observable, oldValue, scene) -> {
             scene.
                     setOnKeyPressed(ke -> {
-                        var keyCode = ke.getCode();
+                        KeyCode keyCode = ke.getCode();
                         switch (keyCode) {
                             case CONTROL:
                             case COMMAND:
@@ -56,7 +56,7 @@ public class GamePane extends BorderPane {
                                 if (!cmdCtrlKeyPressed.get()) gameManager.quitGame();
                                 break;
                             case F: {
-                                var stage = ((Stage) getScene().getWindow());
+                                Stage stage = ((Stage) getScene().getWindow());
                                 stage.setFullScreen(!stage.isFullScreen());
                                 break;
                             }
@@ -67,7 +67,7 @@ public class GamePane extends BorderPane {
                     });
             scene.
                     setOnKeyReleased(ke -> {
-                        var keyCode = ke.getCode();
+                        KeyCode keyCode = ke.getCode();
 
                         if (keyCode.equals(KeyCode.CONTROL) || keyCode.equals(KeyCode.COMMAND)) {
                             cmdCtrlKeyPressed.set(false);
