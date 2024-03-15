@@ -5,7 +5,7 @@ module webfx.demo.fx2048.application.openjfx {
     // Direct dependencies modules
     requires webfx.demo.fx2048.application;
     requires webfx.extras.webtext.peers.openjfx;
-    requires webfx.kit.openjfx;
+    requires webfx.kit.javafxgraphics.openjfx;
     requires webfx.kit.platform.visibility.openjfx;
     requires webfx.platform.boot.java;
     requires webfx.platform.console.java;
