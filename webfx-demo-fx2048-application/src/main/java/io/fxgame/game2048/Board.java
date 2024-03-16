@@ -109,25 +109,25 @@ public class Board extends VBox {
     }
 
     private void createScore() {
-        Label lblTitle = new Label("2048");
+        var lblTitle = new Label("2048");
         lblTitle.getStyleClass().addAll("game-label", "game-title");
         lblTitle.setTextFill(null);
 
-        Label lblSubtitle = new Label("FX");
+        var lblSubtitle = new Label("FX");
         lblSubtitle.getStyleClass().addAll("game-label", "game-subtitle");
         lblSubtitle.setTextFill(null);
 
-        HBox hFill = new HBox();
+        var hFill = new HBox();
         HBox.setHgrow(hFill, Priority.ALWAYS);
         hFill.setAlignment(Pos.CENTER);
 
-        VBox vScores = new VBox();
-        HBox hScores = new HBox(5);
+        var vScores = new VBox();
+        var hScores = new HBox(5);
 
         vScore.setAlignment(Pos.CENTER);
         vScore.getStyleClass().add("game-vbox");
 
-        Label lblTit = new Label("SCORE");
+        var lblTit = new Label("SCORE");
         lblTit.getStyleClass().addAll("game-label", "game-titScore");
         lblTit.setTextFill(null);
 
@@ -138,12 +138,12 @@ public class Board extends VBox {
         vScore.getChildren().addAll(lblTit, lblScore);
         vScore.setPadding(new Insets(10, 15, 10, 15));
 
-        VBox vRecord = new VBox(vScore.getSpacing());
+        var vRecord = new VBox(vScore.getSpacing());
         vRecord.setAlignment(Pos.CENTER);
         vRecord.getStyleClass().add("game-vbox");
         vRecord.setPadding(vScore.getPadding());
 
-        Label lblTitBest = new Label("BEST");
+        var lblTitBest = new Label("BEST");
         lblTitBest.getStyleClass().addAll("game-label", "game-titScore");
         lblTitBest.setTextFill(null);
         lblBest.getStyleClass().addAll("game-label", "game-score");
@@ -153,7 +153,7 @@ public class Board extends VBox {
         vRecord.getChildren().addAll(lblTitBest, lblBest);
         hScores.getChildren().addAll(vScore, vRecord);
 
-        VBox vFill = new VBox();
+        var vFill = new VBox();
         VBox.setVgrow(vFill, Priority.ALWAYS);
         vScores.getChildren().addAll(hScores, vFill);
 
@@ -164,7 +164,7 @@ public class Board extends VBox {
 
         vGame.getChildren().add(hTop);
 
-        HBox hTime = new HBox();
+        var hTime = new HBox();
         hTime.setMinSize(gridWidth, GAP_HEIGHT);
         hTime.setAlignment(Pos.BOTTOM_RIGHT);
         lblTime.getStyleClass().addAll("game-label", "game-time");
@@ -187,7 +187,7 @@ public class Board extends VBox {
 
     private Rectangle createCell(int i, int j) {
         double gap = 7;
-        Rectangle cell = new Rectangle(i * CELL_SIZE + gap , j * CELL_SIZE + gap, CELL_SIZE - 2 * gap, CELL_SIZE - 2 * gap);
+        var cell = new Rectangle(i * CELL_SIZE + gap , j * CELL_SIZE + gap, CELL_SIZE - 2 * gap, CELL_SIZE - 2 * gap);
         // provide default style in case css are not loaded
 /*
         cell.setFill(Color.web("#cdc1b4"));
@@ -214,14 +214,14 @@ public class Board extends VBox {
         gridGroup.setLayoutX(BORDER_WIDTH);
         gridGroup.setLayoutY(BORDER_WIDTH);
 
-        HBox hBottom = new HBox();
+        var hBottom = new HBox();
         hBottom.getStyleClass().add("game-backGrid");
         hBottom.setMinSize(gridWidth, gridWidth);
         hBottom.setPrefSize(gridWidth, gridWidth);
         hBottom.setMaxSize(gridWidth, gridWidth);
 
         // Clip hBottom to keep the dropshadow effects within the hBottom
-        Rectangle rect = new Rectangle(gridWidth, gridWidth);
+        var rect = new Rectangle(gridWidth, gridWidth);
         hBottom.setClip(rect);
         hBottom.getChildren().add(gridGroup);
 
@@ -230,7 +230,7 @@ public class Board extends VBox {
 
     private void createToolBar() {
         // toolbar
-        HBox hPadding = new HBox();
+        var hPadding = new HBox();
         hPadding.setMinSize(gridWidth, TOOLBAR_HEIGHT);
         hPadding.setPrefSize(gridWidth, TOOLBAR_HEIGHT);
         hPadding.setMaxSize(gridWidth, TOOLBAR_HEIGHT);
@@ -319,7 +319,7 @@ public class Board extends VBox {
             }
 
             if (!layerOnProperty.get()) {
-                Button defaultBtn = btn2 == null ? btn1 : btn2;
+                var defaultBtn = btn2 == null ? btn1 : btn2;
                 defaultBtn.requestFocus();
                 defaultBtn.setDefaultButton(true);
 
@@ -341,7 +341,7 @@ public class Board extends VBox {
     private void showOverlay() {
         overlayContainer.setManaged(false);
         getChildren().add(overlayContainer);
-        Parent gridParent = gridGroup.getParent();
+        var gridParent = gridGroup.getParent();
         layoutInArea(overlayContainer, gridParent.getLayoutX(), gridParent.getLayoutY(), gridWidth, gridWidth, 0, HPos.LEFT, VPos.TOP);
     }
 
@@ -540,7 +540,7 @@ public class Board extends VBox {
             return;
         }
 
-        final Timeline timeline = new Timeline();
+        final var timeline = new Timeline();
         lblPoints.setText("+" + gameMovePoints.getValue().toString());
 
         lblPoints.setOpacity(1);
@@ -556,10 +556,10 @@ public class Board extends VBox {
         lblPoints.toFront();
         //webfx.platform.shared.services.log.Logger.log("scoreBounds = " + scoreBounds + "\nscoreBottomRight = " + scoreBottomRight + "\nlblPointsWidth = " + lblPointsWidth + "\nlayoutX = " + lblPoints.getLayoutX());
 
-        final KeyValue kvO = new KeyValue(lblPoints.opacityProperty(), 0);
-        final KeyValue kvY = new KeyValue(lblPoints.layoutYProperty(), lblPoints.getLayoutY() + 50);
+        final var kvO = new KeyValue(lblPoints.opacityProperty(), 0);
+        final var kvY = new KeyValue(lblPoints.layoutYProperty(), lblPoints.getLayoutY() + 50);
 
-        Duration animationDuration = Duration.millis(600);
+        var animationDuration = Duration.millis(600);
         final KeyFrame kfO = new KeyFrame(animationDuration, kvO);
         final KeyFrame kfY = new KeyFrame(animationDuration, kvY);
 
@@ -579,7 +579,7 @@ public class Board extends VBox {
     }
 
     public Tile addRandomTile(Location randomLocation) {
-        Tile tile = Tile.newRandomTile();
+        var tile = Tile.newRandomTile();
         tile.setLocation(randomLocation);
 
         double layoutX = tile.getLocation().getLayoutX(CELL_SIZE) - (tile.getMinWidth() / 2);
@@ -696,7 +696,7 @@ public class Board extends VBox {
         restoreGame.set(false);
         doClearGame();
         timer.stop();
-        SimpleStringProperty sTime = new SimpleStringProperty("");
+        var sTime = new SimpleStringProperty("");
         int score = sessionManager.restoreSession(gameGrid, sTime);
         if (score >= 0) {
             gameScoreProperty.set(score);
@@ -721,12 +721,12 @@ public class Board extends VBox {
     }
 
     public void saveRecord() {
-        RecordManager recordManager = new RecordManager(gridOperator.getGridSize());
+        var recordManager = new RecordManager(gridOperator.getGridSize());
         recordManager.saveRecord(gameScoreProperty.getValue());
     }
 
     private void restoreRecord() {
-        RecordManager recordManager = new RecordManager(gridOperator.getGridSize());
+        var recordManager = new RecordManager(gridOperator.getGridSize());
         gameBestProperty.set(recordManager.restoreRecord());
     }
 

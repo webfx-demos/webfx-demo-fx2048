@@ -85,7 +85,7 @@ public class GameManager extends Pane {
         gameGrid.clear();
         locations.clear();
         gridOperator.traverseGrid((x, y) -> {
-            Location thisloc = new Location(x, y);
+            var thisloc = new Location(x, y);
             locations.add(thisloc);
             gameGrid.put(thisloc, null);
             return 0;
@@ -96,10 +96,10 @@ public class GameManager extends Pane {
      * Starts the game by adding 1 or 2 tiles at random locations
      */
     private void startGame() {
-        Tile tile0 = Tile.newRandomTile();
-        ArrayList<Location> randomLocs = new ArrayList<>(locations);
+        var tile0 = Tile.newRandomTile();
+        var randomLocs = new ArrayList<>(locations);
         Collections.shuffle(randomLocs);
-        Iterator<Location> locs = randomLocs.stream().limit(2).iterator();
+        var locs = randomLocs.stream().limit(2).iterator();
         tile0.setLocation(locs.next());
 
         Tile tile1 = null;
@@ -141,17 +141,17 @@ public class GameManager extends Pane {
 
         board.setPoints(0);
         mergedToBeRemoved.clear();
-        ParallelTransition parallelTransition = new ParallelTransition();
+        var parallelTransition = new ParallelTransition();
         gridOperator.sortGrid(direction);
         final int tilesWereMoved = gridOperator.traverseGrid((x, y) -> {
-            Location thisloc = new Location(x, y);
-            Location farthestLocation = findFarthestLocation(thisloc, direction); // farthest available location
-            Optional<Tile> opTile = optionalTile(thisloc);
+            var thisloc = new Location(x, y);
+            var farthestLocation = findFarthestLocation(thisloc, direction); // farthest available location
+            var opTile = optionalTile(thisloc);
 
-            AtomicInteger result = new AtomicInteger();
-            Location nextLocation = farthestLocation.offset(direction); // calculates to a possible merge
+            var result = new AtomicInteger();
+            var nextLocation = farthestLocation.offset(direction); // calculates to a possible merge
             optionalTile(nextLocation).filter(t -> t.isMergeable(opTile) && !t.isMerged()).ifPresent(t -> {
-                Tile tile = opTile.get();
+                var tile = opTile.get();
                 t.merge(tile);
                 t.toFront();
                 gameGrid.put(nextLocation, t);
@@ -169,7 +169,7 @@ public class GameManager extends Pane {
                 result.set(1);
             });
             if (result.get() == 0 && opTile.isPresent() && !farthestLocation.equals(thisloc)) {
-                Tile tile = opTile.get();
+                var tile = opTile.get();
                 parallelTransition.getChildren().add(animateExistingTile(tile, farthestLocation));
 
                 gameGrid.put(farthestLocation, tile);
@@ -190,7 +190,7 @@ public class GameManager extends Pane {
                 // reset merged after each movement
                 gameGrid.values().stream().filter(Objects::nonNull).forEach(Tile::clearMerge);
 
-                Location randomAvailableLocation = findRandomAvailableLocation();
+                var randomAvailableLocation = findRandomAvailableLocation();
                 if (randomAvailableLocation == null && mergeMovementsAvailable() == 0) {
                     // game is over if there are no more moves available
                     board.setGameOver(true);
@@ -250,11 +250,11 @@ public class GameManager extends Pane {
      * @return the number of pairs of tiles that can be merged
      */
     private int mergeMovementsAvailable() {
-        final AtomicInteger pairsOfMergeableTiles = new AtomicInteger();
+        final var pairsOfMergeableTiles = new AtomicInteger();
 
         Stream.of(Direction.UP, Direction.LEFT).parallel().forEach(direction -> {
             gridOperator.traverseGrid((x, y) -> {
-                Location thisloc = new Location(x, y);
+                var thisloc = new Location(x, y);
                 optionalTile(thisloc).ifPresent(t -> {
                     if (t.isMergeable(optionalTile(thisloc.offset(direction)))) {
                         pairsOfMergeableTiles.incrementAndGet();
@@ -273,7 +273,7 @@ public class GameManager extends Pane {
      *         available
      */
     private Location findRandomAvailableLocation() {
-        List<Location> availableLocations = locations.stream().filter(l -> gameGrid.get(l) == null).collect(Collectors.toList());
+        var availableLocations = locations.stream().filter(l -> gameGrid.get(l) == null).collect(Collectors.toList());
 
         if (availableLocations.isEmpty()) {
             return null;
@@ -291,7 +291,7 @@ public class GameManager extends Pane {
      * @param randomLocation
      */
     private void addAndAnimateRandomTile(Location randomLocation) {
-        Tile tile = board.addRandomTile(randomLocation);
+        var tile = board.addRandomTile(randomLocation);
         gameGrid.put(tile.getLocation(), tile);
 
         animateNewlyAddedTile(tile).play();
@@ -305,7 +305,7 @@ public class GameManager extends Pane {
      * @return a scale transition
      */
     private ScaleTransition animateNewlyAddedTile(Tile tile) {
-        final ScaleTransition scaleTransition = new ScaleTransition(ANIMATION_NEWLY_ADDED_TILE, tile);
+        final var scaleTransition = new ScaleTransition(ANIMATION_NEWLY_ADDED_TILE, tile);
         scaleTransition.setToX(1.0);
         scaleTransition.setToY(1.0);
         scaleTransition.setInterpolator(Interpolator.EASE_OUT);
@@ -326,14 +326,14 @@ public class GameManager extends Pane {
      * @return a timeline
      */
     private Timeline animateExistingTile(Tile tile, Location newLocation) {
-        Timeline timeline = new Timeline();
-        KeyValue kvX = new KeyValue(tile.layoutXProperty(),
+        var timeline = new Timeline();
+        var kvX = new KeyValue(tile.layoutXProperty(),
                 newLocation.getLayoutX(Board.CELL_SIZE) - (tile.getMinHeight() / 2), Interpolator.EASE_OUT);
-        KeyValue kvY = new KeyValue(tile.layoutYProperty(),
+        var kvY = new KeyValue(tile.layoutYProperty(),
                 newLocation.getLayoutY(Board.CELL_SIZE) - (tile.getMinHeight() / 2), Interpolator.EASE_OUT);
 
-        KeyFrame kfX = new KeyFrame(ANIMATION_EXISTING_TILE, kvX);
-        KeyFrame kfY = new KeyFrame(ANIMATION_EXISTING_TILE, kvY);
+        var kfX = new KeyFrame(ANIMATION_EXISTING_TILE, kvX);
+        var kfY = new KeyFrame(ANIMATION_EXISTING_TILE, kvY);
 
         timeline.getKeyFrames().add(kfX);
         timeline.getKeyFrames().add(kfY);
@@ -349,12 +349,12 @@ public class GameManager extends Pane {
      * @return a sequential transition
      */
     private SequentialTransition animateMergedTile(Tile tile) {
-        final ScaleTransition scale0 = new ScaleTransition(ANIMATION_MERGED_TILE, tile);
+        final var scale0 = new ScaleTransition(ANIMATION_MERGED_TILE, tile);
         scale0.setToX(1.2);
         scale0.setToY(1.2);
         scale0.setInterpolator(Interpolator.EASE_IN);
 
-        final ScaleTransition scale1 = new ScaleTransition(ANIMATION_MERGED_TILE, tile);
+        final var scale1 = new ScaleTransition(ANIMATION_MERGED_TILE, tile);
         scale1.setToX(1.0);
         scale1.setToY(1.0);
         scale1.setInterpolator(Interpolator.EASE_OUT);
@@ -440,21 +440,21 @@ public class GameManager extends Pane {
     }
 
     private HBox createToolBar() {
-        Button btItem1 = createButtonItem("mSave", "Save Session", t -> saveSession());
-        Button btItem2 = createButtonItem("mRestore", "Restore Session", t -> restoreSession());
-        Button btItem3 = createButtonItem("mPause", "Pause Game", t -> board.pauseGame());
-        Button btItem4 = createButtonItem("mReplay", "Try Again", t -> board.tryAgain());
-        Button btItem5 = createButtonItem("mInfo", "About the Game", t -> board.aboutGame());
-        Button btItem6 = createButtonItem("mQuit", "Quit Game", t -> quitGame());
+        var btItem1 = createButtonItem("mSave", "Save Session", t -> saveSession());
+        var btItem2 = createButtonItem("mRestore", "Restore Session", t -> restoreSession());
+        var btItem3 = createButtonItem("mPause", "Pause Game", t -> board.pauseGame());
+        var btItem4 = createButtonItem("mReplay", "Try Again", t -> board.tryAgain());
+        var btItem5 = createButtonItem("mInfo", "About the Game", t -> board.aboutGame());
+        var btItem6 = createButtonItem("mQuit", "Quit Game", t -> quitGame());
 
-        HBox toolbar = new HBox(btItem1, btItem2, btItem3, btItem4, btItem5, btItem6);
+        var toolbar = new HBox(btItem1, btItem2, btItem3, btItem4, btItem5, btItem6);
         toolbar.setAlignment(Pos.CENTER);
         toolbar.setPadding(new Insets(10.0));
         return toolbar;
     }
 
     private Button createButtonItem(String symbol, String text, EventHandler<ActionEvent> t) {
-        Button g = new Button();
+        var g = new Button();
         g.setPrefSize(40, 40);
         g.setId(symbol);
         g.setOnAction(t);

@@ -25,7 +25,7 @@ public class Game2048 extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        Scene scene = DeviceSceneUtil.newScene(new Pane() /* temporary dummy root */, 600, 600);
+        var scene = DeviceSceneUtil.newScene(new Pane() /* temporary dummy root */, 600, 600);
         scene.getStylesheets().add(Resource.toUrl("css/game.css", getClass()));
 
         // Ensuring the font is loaded before instantiating GamePane (otherwise some bounds may be wrong on first layout - ex: "FX" after 2048)
