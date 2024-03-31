@@ -6,7 +6,6 @@ module webfx.demo.fx2048.application {
     requires javafx.base;
     requires javafx.controls;
     requires javafx.graphics;
-    requires webfx.demo.fx2048.css;
     requires webfx.extras.webtext;
     requires webfx.kit.util.scene;
     requires webfx.platform.resource;
@@ -15,6 +14,9 @@ module webfx.demo.fx2048.application {
 
     // Exported packages
     exports io.fxgame.game2048;
+
+    // Resources packages
+    opens dev.webfx.kit.css;
 
     // Provided services
     provides javafx.application.Application with io.fxgame.game2048.Game2048;

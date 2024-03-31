@@ -26,22 +26,19 @@ public class Game2048 extends Application {
     public void start(Stage primaryStage) {
 
         var scene = DeviceSceneUtil.newScene(new Pane() /* temporary dummy root */, 600, 600);
-        scene.getStylesheets().add(Resource.toUrl("css/game.css", getClass()));
+        //scene.getStylesheets().add(Resource.toUrl("css/game.css", getClass()));
 
         // Ensuring the font is loaded before instantiating GamePane (otherwise some bounds may be wrong on first layout - ex: "FX" after 2048)
-        Font.loadFont(Resource.toUrl("css/ClearSans-Bold.ttf", getClass()), 14);
-        DeviceSceneUtil.onFontsLoaded(() -> {
-            gamePane = new GamePane();
-            scene.setRoot(gamePane);
-            gamePane.requestFocus();
-        });
+        //Font.loadFont(Resource.toUrl("css/ClearSans-Bold.ttf", getClass()), 14);
+        gamePane = new GamePane();
+        scene.setRoot(gamePane);
+        gamePane.requestFocus();
 
         setGameBounds(primaryStage, scene);
         setEnhancedDeviceSettings(primaryStage, scene);
         setQuitListener(primaryStage);
 
         primaryStage.show();
-        gamePane.requestFocus();
     }
 
     private void setQuitListener(Stage primaryStage) {

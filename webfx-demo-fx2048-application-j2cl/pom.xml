@@ -36,12 +36,6 @@
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-demo-fx2048-css-web</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>dev.webfx</groupId>
             <artifactId>webfx-extras-webtext-peers-gwt-j2cl</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
@@ -144,15 +138,15 @@
                                     <artifactItems>
                                         <artifactItem>
                                             <groupId>dev.webfx</groupId>
-                                            <artifactId>webfx-kit-javafxcontrols-emul</artifactId>
+                                            <artifactId>webfx-demo-fx2048-application</artifactId>
                                             <version>0.1.0-SNAPSHOT</version>
-                                            <includes>javafx/scene/control/skin/checkbox/</includes>
+                                            <includes>dev/webfx/kit/css/</includes>
                                         </artifactItem>
                                         <artifactItem>
                                             <groupId>dev.webfx</groupId>
-                                            <artifactId>webfx-demo-fx2048-css-web</artifactId>
+                                            <artifactId>webfx-kit-javafxcontrols-emul</artifactId>
                                             <version>0.1.0-SNAPSHOT</version>
-                                            <includes>io/fxgame/game2048/css/</includes>
+                                            <includes>javafx/scene/control/skin/checkbox/</includes>
                                         </artifactItem>
                                     </artifactItems>
                                     <excludes>**/*.java,**/*.class</excludes>

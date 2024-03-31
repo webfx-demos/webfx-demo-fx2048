@@ -25,12 +25,6 @@
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-demo-fx2048-css-openjfx</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>dev.webfx</groupId>
             <artifactId>webfx-extras-webtext-peers-openjfx</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
@@ -115,8 +109,8 @@
                         <list>util</list>
                     </attachList>
                     <resourcesList>
+                        <list>dev/webfx/kit/css/[^/]+$</list>
                         <list>dev/webfx/platform/meta/exe/[^/]+$</list>
-                        <list>io/fxgame/game2048/css/[^/]+$</list>
                         <list>javafx/scene/control/skin/checkbox/[^/]+$</list>
                     </resourcesList>
                     <appIdentifier>dev.webfx.demo.fx2048</appIdentifier>

@@ -3,6 +3,7 @@
 
     <exported-packages>
         <source-packages/>
+        <resource-packages/>
     </exported-packages>
 
     <providers>
@@ -11,7 +12,6 @@
 
     <dependencies>
         <used-by-source-modules/>
-        <resource-module>webfx-demo-fx2048-css</resource-module>
     </dependencies>
 
 </project>
