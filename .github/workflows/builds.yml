@@ -167,7 +167,7 @@ jobs:
       - if: matrix.j2cl-artifact-suffix != null || matrix.app.j2cl-push-branch != null && matrix.os-config == 1
         name: Build J2CL application
         run: mvn -B -P j2cl package
-        working-directory: ${{ env.app-parent-module-dir }}
+        working-directory: ${{ env.app-j2cl-module-dir }}
 
       # Building OpenJFX fat jar and installers (if required)
       - if: matrix.fatjar-artifact-suffix != null
