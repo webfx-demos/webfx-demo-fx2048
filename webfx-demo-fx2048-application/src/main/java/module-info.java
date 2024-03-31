@@ -3,7 +3,6 @@
 module webfx.demo.fx2048.application {
 
     // Direct dependencies modules
-    requires java.base;
     requires javafx.base;
     requires javafx.controls;
     requires javafx.graphics;
