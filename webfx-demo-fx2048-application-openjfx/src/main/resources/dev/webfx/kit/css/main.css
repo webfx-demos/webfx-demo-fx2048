@@ -6,13 +6,13 @@
 }
 
 
-/*===== webtext-javafx@main.css from webfx-extras-webtext-peers-openjfx =====*/
+/*===== webfx-extras-webtext-javafx@main.css from webfx-extras-webtext-peers-openjfx =====*/
 
 HtmlText, HtmlTextEditor {
     -fx-skin: "dev.webfx.kit.mapper.peers.javafxcontrols.openjfx.skin.FxControlPeerSkin";
 }
 
-/*===== game-javafx@main.css from webfx-demo-fx2048-application =====*/
+/*===== fx2048-javafx@main.css from webfx-demo-fx2048-application =====*/
 
 .game-root {
     -fx-background-color: #faf8ef;
