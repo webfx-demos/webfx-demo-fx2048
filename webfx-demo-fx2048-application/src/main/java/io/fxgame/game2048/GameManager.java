@@ -311,7 +311,7 @@ public class GameManager extends Pane {
         scaleTransition.setInterpolator(Interpolator.EASE_OUT);
         scaleTransition.setOnFinished(e -> {
             // after last movement on full grid, check if there are movements available
-            if (this.gameGrid.values().parallelStream().noneMatch(Objects::isNull) && mergeMovementsAvailable() == 0) {
+            if (this.gameGrid.values().stream().noneMatch(Objects::isNull) && mergeMovementsAvailable() == 0) {
                 board.setGameOver(true);
             }
         });

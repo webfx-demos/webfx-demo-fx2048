@@ -67,7 +67,7 @@
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-platform-scheduler-java</artifactId>
+            <artifactId>webfx-platform-scheduler-jre</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
@@ -79,7 +79,7 @@
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-platform-storage-java</artifactId>
+            <artifactId>webfx-platform-storage-jre</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
@@ -111,7 +111,6 @@
                     <resourcesList>
                         <list>dev/webfx/kit/css/[^/]+$</list>
                         <list>dev/webfx/platform/meta/exe/[^/]+$</list>
-                        <list>javafx/scene/control/skin/checkbox/[^/]+$</list>
                     </resourcesList>
                     <appIdentifier>dev.webfx.demo.fx2048</appIdentifier>
                     <releaseConfiguration>

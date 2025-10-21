@@ -274,7 +274,7 @@ public class Board extends VBox {
     }
 
     private void exitGame() {
-        Shutdown.softwareShutdown(true, 0);
+        Shutdown.exit(0);
     }
 
     private final Overlay wonListener = new Overlay("You win!", "", bContinue, bTry, "game-overlay-won", "game-lblWon");
