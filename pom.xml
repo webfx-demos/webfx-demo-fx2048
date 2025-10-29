@@ -39,6 +39,7 @@
         <module>webfx-demo-fx2048-application-j2cl</module>
         <module>webfx-demo-fx2048-application-openjfx</module>
         <module>webfx-demo-fx2048-application-teavm</module>
+        <module>webfx-demo-fx2048-application-teavm-wasm</module>
     </modules>
 
 </project>
