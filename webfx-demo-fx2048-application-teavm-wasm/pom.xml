@@ -114,9 +114,10 @@
 
     </dependencies>
 
+    <!-- Unpacking all resources for this web archive, but only when the user activates the teavm-wasm profile -->
     <profiles>
         <profile>
-            <id>teavm</id>
+            <id>teavm-wasm</id>
             <build>
                 <plugins>
                     <plugin>
@@ -125,7 +126,7 @@
                         <executions>
                             <execution>
                                 <id>unpack-resources-to-web</id>
-                                <phase>package</phase>
+                                <phase>${plugin.teavm.param.execution.compile.phase}</phase>
                                 <goals>
                                     <goal>unpack</goal>
                                 </goals>

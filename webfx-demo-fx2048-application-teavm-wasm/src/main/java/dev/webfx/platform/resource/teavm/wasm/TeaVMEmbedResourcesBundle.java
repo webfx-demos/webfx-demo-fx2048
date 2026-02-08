@@ -1,4 +1,4 @@
-package dev.webfx.platform.resource.teavm;
+package dev.webfx.platform.resource.teavm.wasm;
 
 import dev.webfx.platform.resource.spi.impl.teavm.TeaVMResourceBundle;
 import org.teavm.classlib.ResourceSupplier;
